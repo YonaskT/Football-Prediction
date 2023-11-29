@@ -32,10 +32,6 @@ pl_df=pl_df[['Date', 'Time','HomeTeam', 'AwayTeam','XGHome', 'Score', 'XGAway','
 
 pl_df=pl_df[['Date', 'Time','HomeTeam', 'AwayTeam','XGHome', 'Score', 'XGAway','HomeGoals','AwayGoals']]
 
-df=pd.concat([pl_df[['HomeTeam','AwayTeam','HomeGoals','XGHome']].assign(home=1).rename(
-            columns={'HomeTeam':'team', 'AwayTeam':'opponent','HomeGoals':'goals','XGHome':'XG'}),
-           pl_df[['AwayTeam','HomeTeam','AwayGoals','XGAway']].assign(home=0).rename(
-            columns={'AwayTeam':'team', 'HomeTeam':'opponent','AwayGoals':'goals','XGAway':'XG'})])
 
 df = pd.concat([pl_df[['HomeTeam','AwayTeam','HomeGoals']].assign(home=1).rename(
             columns={'HomeTeam':'team', 'AwayTeam':'opponent','HomeGoals':'goals'}),
@@ -48,21 +44,7 @@ if st.checkbox('Show raw data'):
     st.subheader('Raw data')
     st.write(df[['team','opponent','home']])
 
-#%%
-df_home =pl_df[['HomeTeam', 'HomeGoals', 'AwayGoals']]
-df_away = pl_df[['AwayTeam', 'HomeGoals', 'AwayGoals']]
 
-df_home = df_home.rename(columns={'HomeTeam': 'club', 'HomeGoals': 'GoalsScored', 'AwayGoals': 'GoalsConceded'})
-df_away = df_away.rename(columns={'AwayTeam': 'club', 'HomeGoals': 'GoalsConceded', 'AwayGoals': 'GoalsScored'})
-
-df_team_strength = pd.concat([df_home, df_away], ignore_index=True).groupby(['club']).mean()
-
-# Get average goals scored and conceded for each team
-#team_stats = df_team_strength[['GoalsScored', 'GoalsConceded']].values
-
-#%%
-
-df_team_strength
 # building the poisson model
 formula = 'goals ~ team + opponent + home'
 model = smf.glm(formula=formula, data=df, family=sm.families.Poisson()).fit()
