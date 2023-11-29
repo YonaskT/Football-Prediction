@@ -6,6 +6,7 @@ import statsmodels.formula.api as smf
 import seaborn as sns 
 import matplotlib.pyplot as plt 
 import streamlit as st
+import lxml
 
 st.header('Premier League Match Prediction for 2023/24')
 home = st.sidebar.selectbox('Select home team', ['Arsenal', 'Aston Villa', 'Bournemouth', 'Brentford', 'Brighton', 'Chelsea', 'Crystal Palace', 'Everton', 'Fulham',
