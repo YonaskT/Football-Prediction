@@ -10,11 +10,11 @@ import lxml
 
 st.header('Premier League Match Prediction for 2024/25')
 home = st.sidebar.selectbox('Select home team', ['Arsenal', 'Aston Villa', 'Bournemouth', 'Brentford', 'Brighton', 'Chelsea', 'Crystal Palace', 'Everton', 'Fulham',
-                                          'Ipswich Town', 'Leicester city', 'Liverpool', 'Manchester Utd', 'Manchester City', 'Newcastle Utd', "Nott'ham Forest", 'Southampton',
+                                          'Ipswich Town', 'Leicester City', 'Liverpool', 'Manchester Utd', 'Manchester City', 'Newcastle Utd', "Nott'ham Forest", 'Southampton',
                                            'Tottenham', 'West Ham', 'Wolves'])
 
 away = st.sidebar.selectbox('Select away team', ['Aston Villa', 'Arsenal', 'Bournemouth', 'Brentford', 'Brighton', 'Chelsea', 'Crystal Palace', 'Everton', 'Fulham',
-                                          'Ipswich Town', 'Leicester city', 'Liverpool', 'Manchester Utd', 'Manchester City', 'Newcastle Utd', "Nott'ham Forest", 'Southampton',
+                                          'Ipswich Town', 'Leicester City', 'Liverpool', 'Manchester Utd', 'Manchester City', 'Newcastle Utd', "Nott'ham Forest", 'Southampton',
                                            'Tottenham', 'West Ham', 'Wolves'])
 button = st.sidebar.button('Predict')
 #Dataset is webscraped from fbref and football data websites
